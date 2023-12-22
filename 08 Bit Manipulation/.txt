@@ -1,0 +1,6 @@
+1] AND
+a ^ 1 = a complement
+a ^ 0 = a 
+a ^ a = 0
+
+2] OR

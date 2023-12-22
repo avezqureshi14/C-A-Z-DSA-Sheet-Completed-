@@ -1,0 +1,52 @@
+Time complexity:
+
+O(1) - constant time
+O(log n) - logarithmic time
+O(n) - linear time
+O(n log n) - linearithmic time
+O(n^2) - quadratic time
+O(2^n) - exponential time
+Space complexity:
+
+O(1) - constant space
+O(log n) - logarithmic space
+O(n) - linear space
+O(n log n) - linearithmic space
+O(n^2) - quadratic space
+O(2^n) - exponential space
+
+🔥 This formula is used to avoid the problem of integer overflow during binary search 
+    int mid = low + (high-low) / 2;
+
+🔥 Condition for Search in sorted and rotated array (target >= nums[0] && target <= nums[pivot - 1])
+
+🔥 Floor and Ceil
+🎯 To find the floor you would perform a binary search to find the largest element in the array that is less than or equal to the target element.
+🎯 To find the ceil you would perform a binary search to find the smallest element in the array that is greater than or equal to the target element.
+
+🔥Array rotation
+🎯 The new index of same element after rotating will be (i + k) % n
+🎯 If the number of rotation 'k' are given more than the size, than just do k = k % n 
+🎯 To rotate array implace reverse it part by part
+
+
+🔥If we have to move any single number 
+🎯 Keep variable on that number, and if we get any other number than that then just swap it
+
+
+🔥Search in 2d matrix
+🔴 Variations
+❤️ Leetcode : (Apply Binary Search HINT: row = mid/col column = mid%col )
+    1. Each row is sorted
+    2. First integer of each row is greater than the last integer of the previous row (means if you will make it a straight single array it will be completely in a sorted order)
+❤️ GFG : (Ladder way)
+    Rowise and Columnwise sorted 
+
+When you convert a matrix to an array then to check whether our rows has been completed in actual matrix we can use the condition given below
+👉👉           int row = 0 //for zero based indexing
+                if (i % m == m-1) {
+                    row++;
+                }
+
+//hack for implace placing in mergeSort
+nums[i] = temp[i-low];
