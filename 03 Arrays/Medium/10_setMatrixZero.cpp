@@ -17,7 +17,7 @@ void markRow(vector<vector<int>> &matrix, int n, int m, int i)
         }
     }
 }
-
+                                                         
 void markCol(vector<vector<int>> &matrix, int n, int m, int j)
 {
     // set all non zero elements as -1 in the col j
@@ -45,7 +45,7 @@ vector<vector<int>> zeroMatrixI(vector<vector<int>> &matrix, int n, int m)
             }
         }
     }
-
+ 
     // Finally mark all -1s as 0
     for (int i = 0; i < n; i++)
     {
@@ -97,6 +97,7 @@ vector<vector<int>> zeroMatrixII(vector<vector<int>> &matrix, int n, int m)
 
 vector<vector<int>> zeroMatrixIII(vector<vector<int>> &matrix, int n, int m)
 {
+    //will be zero if any cell in the zeroth colum contains zero
     int col0 = 1;
 
     // Do the work which we use to do in two arrays above

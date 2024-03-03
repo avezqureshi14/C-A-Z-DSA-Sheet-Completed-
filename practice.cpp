@@ -1,74 +1,61 @@
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
-class Node
-{
-public:
-    int data;
-    Node *left;
-    Node *right;
-    Node(int val)
+int maxSumOfNonAdjacent(int n, vector<int>nums){
+    if (n < 0)
     {
-        this->data = val;
-        this->left = NULL;
-        this->right = NULL;
+        return 0;
     }
-};
-
-Node *createTree(Node *root)
-{
-    int data;
-    cout << "Enter the data " << endl;
-    cin >> data;
-    if (data == -1)
+    if (n == 0)
     {
-        return NULL;
+        return nums[0];
     }
-    root = new Node(data);
-    cout << "Enter the data to the left of " << data << endl;
-    root->left = createTree(root->left);
-    cout << "Enter the data to the right of " << data << endl;
-    root->right = createTree(root->right);
-
-    return root;
+    int pick =  maxSumOfNonAdjacent(n-2,nums) + nums[n];
+    int nonPick = maxSumOfNonAdjacent(n-1,nums);
+    return max(pick,nonPick); 
 }
 
-void verticalOrder(Node*root){
-    queue<pair<Node*,pair<int,int>>>q;
-    q.push({root,{0,0}});
-    map<int,map<int,vector<int>>>nodes;
-    while (!q.empty())
+int maxSumOfNonAdjacentII(int n, vector<int>nums, vector<int>dp){
+    if (n < 0)
     {
-        Node*frontNode = q.front().first;
-        int hd = q.front().second.first;
-        int lvl = q.front().second.second;
-        q.pop();
-        nodes[hd][lvl].push_back(frontNode->data);
-        if (frontNode->left)
-        {
-            q.push({frontNode->left,{hd-1,lvl+1}});
-        }
-        if (frontNode->right)
-        {
-            q.push({frontNode->right,{hd+1,lvl+1}});
-        }
+        return 0;
     }
-    for(auto i : nodes){
-        for(auto j : i.second){
-            for(auto k : j.second){
-                cout<<k<<" ";
-            }
-        }
+    if (n == 0)
+    {
+        dp[n] = nums[0];
+        return dp[n];
     }
+    if (dp[n] != -1)
+    {
+        return dp[n];
+    }
+    int pick = maxSumOfNonAdjacentII(n-2,nums,dp) + nums[n];
+    int nonPick = maxSumOfNonAdjacentII(n-1,nums,dp);
+    dp[n] = max(pick,nonPick);
+    return dp[n];
 }
+
+int maxSumOfNonAdjacentIII(int n, vector<int>nums){
+    vector<int>dp(n+1,-1);
+    dp[0] = nums[0];
+    dp[1] = nums[1];
+    for (int i = 2; i <= n; i++)
+    {
+        int pick = dp[i-2] + nums[i];
+        int nonPick = dp[i-1];
+        dp[i] = max(pick,nonPick);
+    }
+    return dp[n];
+}
+
 
 
 int main()
 {
-    Node *root = NULL;
-    root = createTree(root);
-    verticalOrder(root);
+    int n = 5;
+    vector<int>nums = {1,2,3,4,5,6};
+    vector<int>dp(n+1,-1);
+    cout<<maxSumOfNonAdjacentIII(n,nums);
+
     return 0;
 }
-
-// 1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1
