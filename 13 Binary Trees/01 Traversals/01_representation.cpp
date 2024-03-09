@@ -15,30 +15,27 @@ public:
     }
 };
 
-Node *createTree(Node*root)
+Node *createTree(Node *root)
 {
     int data;
-    cout<<"Enter the data "<<endl;
+    cout << "Enter the data " << endl;
     cin >> data;
     if (data == -1)
     {
         return NULL;
     }
     root = new Node(data);
-    cout<<"Enter the data to the left of "<<data<<endl;
+    cout << "Enter the data to the left of " << data << endl;
     root->left = createTree(root->left);
-    cout<<"Enter the data to the right of "<<data<<endl;
+    cout << "Enter the data to the right of " << data << endl;
     root->right = createTree(root->right);
 
     return root;
 }
 
-
-
-
 int main()
 {
-    Node*root = NULL;
+    Node *root = NULL;
     createTree(root);
     return 0;
 }
