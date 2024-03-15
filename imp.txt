@@ -50,3 +50,14 @@ When you convert a matrix to an array then to check whether our rows has been co
 
 //hack for implace placing in mergeSort
 nums[i] = temp[i-low];
+
+explaining the problem by creeating of arrays of string is easier than substring
+like 
+
+["cab","ad","bad"]
+
+arrays of strings
+["c","a","b","ca","ab","cab"]
+["a","d","ad"]
+...
+..
