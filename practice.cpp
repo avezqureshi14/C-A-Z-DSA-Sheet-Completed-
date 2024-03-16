@@ -1,28 +1,43 @@
 #include <iostream>
-
-bool isPowerOf(int num, int base)
+#include <bits/stdc++.h>
+using namespace std;
+void recurPerm(vector<int> &ds, vector<vector<int>> &ans, vector<int> &nums, vector<int> &freq)
 {
-    while (num > 1 && num % base == 0)
+    if (ds.size() == nums.size())
     {
-        num /= base;
+        ans.push_back(ds);
+        return;
     }
-
-    return num == 1;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (!freq[i])
+        {
+            ds.push_back(nums[i]);
+            freq[i] = 1;
+            recurPerm(ds, ans, nums, freq);
+            freq[i] = 0;
+            ds.pop_back();
+        }
+    }
 }
-
+vector<vector<int>> permute(vector<int> &nums)
+{
+    vector<int> freq(nums.size(), 0);
+    vector<int> ds;
+    vector<vector<int>> ans;
+    recurPerm(ds, ans, nums, freq);
+    return ans;
+}
 int main()
 {
-    int givenNumber = 3;
-    int particularNumber = 16;
-
-    if (isPowerOf(38416, 14))
+    vector<int> nums = {1, 2, 3};
+    for (auto i : permute(nums))
     {
-        std::cout << givenNumber << " is a power of " << particularNumber << std::endl;
+        for (auto j : i)
+        {
+            cout << j << " ";
+        }
+        cout << endl;
     }
-    else
-    {
-        std::cout << givenNumber << " is not a power of " << particularNumber << std::endl;
-    }
-
     return 0;
 }

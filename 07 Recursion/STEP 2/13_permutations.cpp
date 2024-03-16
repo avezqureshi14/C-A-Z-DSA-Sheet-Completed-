@@ -23,7 +23,8 @@ void recursionI(vector<int> &ds, vector<int> &nums, vector<vector<int>> &ans, ve
     }
 }
 
-void recursionII(int index, vector<int>&nums, vector<vector<int>>&ans){
+void recursionII(int index, vector<int> &nums, vector<vector<int>> &ans)
+{
     if (index == nums.size())
     {
         ans.push_back(nums);
@@ -31,30 +32,30 @@ void recursionII(int index, vector<int>&nums, vector<vector<int>>&ans){
     }
     for (int i = index; i < nums.size(); i++)
     {
-        swap(nums[index],nums[i]);
-        recursionII(index+1,nums,ans);
-        swap(nums[index],nums[i]);
+        swap(nums[index], nums[i]);
+        recursionII(index + 1, nums, ans);
+        swap(nums[index], nums[i]);
     }
-    
 }
-
 vector<vector<int>> permutation(vector<int> &nums)
 {
     vector<vector<int>> ans;
     vector<int> ds;
     vector<int> freq(nums.size(), 0);
     // recursionI(ds,nums,ans,freq);
-    recursionII(0,nums,ans);
+    recursionII(0, nums, ans);
     return ans;
 }
 int main()
 {
-    vector<int>nums = {1,2,3};
-    for(auto i : permutation(nums)){
-        for(auto j : i){
-            cout<<j<<" ";
+    vector<int> nums = {1, 2, 3};
+    for (auto i : permutation(nums))
+    {
+        for (auto j : i)
+        {
+            cout << j << " ";
         }
-        cout<<endl;
-    }    
+        cout << endl;
+    }
     return 0;
 }

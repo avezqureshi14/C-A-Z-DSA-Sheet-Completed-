@@ -4,6 +4,7 @@ using namespace std;
 
 void solve(int index, vector<vector<int>> &ans, vector<int> &ds, vector<int> &nums)
 {
+    // here we have to push each value , previously we were pushing the value when it was satisfying the condition
     ans.push_back(ds);
     for (int i = index; i < nums.size(); i++)
     {
@@ -27,7 +28,7 @@ vector<vector<int>> subSetsII(vector<int> &nums)
 
 int main()
 {
-    vector<int> candidates = {4,4,4,1,4};
+    vector<int> candidates = {4, 4, 4, 1, 4};
 
     vector<vector<int>> result = subSetsII(candidates);
 
