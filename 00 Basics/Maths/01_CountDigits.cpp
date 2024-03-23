@@ -1,5 +1,7 @@
 #include <iostream>
 using namespace std;
+// modulo - give last digits
+// division - remove last digit
 int countDigits(int n)
 {
     int count = 0;
@@ -14,6 +16,6 @@ int countDigits(int n)
 int main()
 {
     int n = 547856;
-    cout<<"The number of digits in given number are "<<countDigits(n);
+    cout << "The number of digits in given number are " << countDigits(n);
     return 0;
 }
