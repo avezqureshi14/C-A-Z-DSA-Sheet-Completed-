@@ -1,6 +1,6 @@
 #include <iostream>
 #include <bits/stdc++.h>
-typedef pair<int,pair<int,int>>ppi; 
+// typedef pair<int,pair<int,int>>ppi;
 using namespace std;
 int main()
 {
