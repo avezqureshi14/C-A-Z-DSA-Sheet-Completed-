@@ -45,7 +45,7 @@ vector<pair<int, int>> trimmer(vector<string> &nums, int trim)
     return trimmed;
 }
 
-vector<int> smallestTrimmedNumbers(vector<string> &nums, vector<vector<int>> &queries)
+vector<int> smallestTrimmedNumbersII(vector<string> &nums, vector<vector<int>> &queries)
 {
     int n = queries.size();
 
@@ -60,14 +60,43 @@ vector<int> smallestTrimmedNumbers(vector<string> &nums, vector<vector<int>> &qu
     return ans;
 }
 
+vector<int> smallestTrimmedNumbers(vector<string> &nums, vector<vector<int>> &queries)
+{
+    vector<int> ans;
+    for (auto q : queries)
+    {
+        int k = q[0];
+        int trim = q[1];
+        priority_queue<pair<string, int>> pq;
+        for (int i = 0; i < nums.size(); i++)
+        {
+            string val = nums[i];
+            if (trim < nums[i].size())
+            {
+                val = nums[i].substr(nums[i].size() - trim, trim);
+            }
+            pair<string, int> p = {val, i};
+            if (pq.size() < k)
+            {
+                pq.push(p);
+            }
+            else if (pq.top() > p)
+            {
+                pq.pop();
+                pq.push(p);
+            }
+        }
+        ans.push_back(pq.top().second);
+    }
+    return ans;
+}
+
 int main()
 {
     vector<string> nums = {"24", "37", "96", "04"};
     vector<vector<int>> queries = {
-        {1, 1},
-        {2, 3},
-        {4, 2},
-        {1, 2}};
+        {2, 1},
+        {2, 2}};
     for (auto i : smallestTrimmedNumbers(nums, queries))
     {
         cout << i << " ";

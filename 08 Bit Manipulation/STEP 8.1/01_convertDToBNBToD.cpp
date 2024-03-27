@@ -2,6 +2,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// when u divided it by 2 ,TC will be  is always log base 2n
+
 // Function to convert decimal to binary
 string decimalToBinary(int decimal)
 {
@@ -40,7 +42,7 @@ int main()
     string binary = "1000010";
     int decimal = 21;
     // cout<<"Binary to Decimal "<<binaryToDecimal(binary)<<endl;
-    cout<<"Decimal to Binary of "<<decimal<<" is "<<decimalToBinary(decimal)<<endl;
+    cout << "Decimal to Binary of " << decimal << " is " << decimalToBinary(decimal) << endl;
 
-   return 0;
+    return 0;
 }
