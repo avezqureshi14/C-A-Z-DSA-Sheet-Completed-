@@ -32,7 +32,19 @@ int compare(vector<vector<int>> &rows, vector<vector<int>> &cols)
     {
         for (int j = 0; j < n; j++)
         {
-            if (rows[i] == cols[j] && i != j)
+            cout << "i = " << i << ", j = " << j << endl;
+            for (auto k : rows[i])
+            {
+                cout << k << " ";
+            }
+            cout << endl;
+            for (auto k : cols[j])
+            {
+                cout << k << " ";
+            }
+            cout << endl;
+            cout << endl;
+            if (rows[i] == cols[j])
             {
                 count++;
             }
@@ -58,12 +70,34 @@ int equalPairs(vector<vector<int>> &grid)
     return compare(rows, cols);
 }
 
+int equalPairsII(vector<vector<int>> &grid)
+{
+    int n = grid.size(), ans = 0;
+    map<vector<int>, int> mp;
+    for (int i = 0; i < n; i++)
+        mp[grid[i]]++;
+
+    for (auto i : mp)
+    {
+    }
+    for (int i = 0; i < n; i++)
+    {
+        vector<int> temp(n);
+        for (int j = 0; j < n; j++)
+            temp[j] = grid[j][i];
+        if (mp.count(temp))
+            ans += mp[temp];
+    }
+    return ans;
+}
+
 int main()
 {
     vector<vector<int>> grid = {
-        {3, 2, 1},
-        {1, 7, 6},
-        {2, 7, 7}};
+        {3, 1, 2, 2},
+        {1, 4, 4, 5},
+        {2, 4, 2, 2},
+        {2, 4, 2, 2}};
     cout << equalPairs(grid);
     return 0;
 }

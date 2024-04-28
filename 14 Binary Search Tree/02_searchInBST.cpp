@@ -76,7 +76,7 @@ int main()
 {
     Node *root = NULL;
     root = buildTree(root);
-    if (search(root, 5))
+    if (search(root, 4))
     {
         cout << "Yeah";
     }

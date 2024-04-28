@@ -67,3 +67,9 @@ if said circular array
 start from i = 2*n-1
 access arr[i%n]
 n is the size of array
+
+
+
+#When given no.s in the rangle 1 to N use cyclic sorted
+#BST inorder is sorted array
+#sorted array use binary search

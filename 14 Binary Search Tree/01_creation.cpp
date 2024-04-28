@@ -18,7 +18,7 @@ public:
 Node *insertIntoBST(Node *root, int val)
 {
 
-    if (!root )
+    if (!root)
     {
         root = new Node(val);
         return root;
